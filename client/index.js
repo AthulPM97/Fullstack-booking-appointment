@@ -30,15 +30,13 @@ submitButton.addEventListener("click", (e) => {
       axios.post('http://localhost:3000/user/add-user',
       object)
       .then((user) => {
-        console.log(user.data);
         addNewLineElement(user.data);
-        // location.reload();
       })
       .catch(err => console.log(err));
     } else {
       console.log("editing");
       edit = false;
-      axios.put(`https://crudcrud.com/api/963cbff8107040e9be9c8d6e1921ff3f/appointementData/${id}`,
+      axios.put(`http://localhost:3000/user/${id}`,
       object).then((response) => {
         addNewLineElement(response.data)
       })
@@ -83,7 +81,7 @@ function addNewLineElement(object) {
   //delete event
   deleteBtn.addEventListener("click", () => {
     //delete from crudcrud and remove li
-    axios.delete(`https://crudcrud.com/api/963cbff8107040e9be9c8d6e1921ff3f/appointementData/${object.id}`)
+    axios.delete(`http://localhost:3000/user/${object.id}`)
     li.remove();
   });
   deleteBtn.className = "delete";
